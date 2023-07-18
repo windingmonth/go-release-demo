@@ -7,12 +7,20 @@ before:
     # you may remove this if you don't need go generate
     - go generate ./...
 builds:
-  - env:
+  - main: ./cmd/goreleaserdemo/main.go
+    id: goreleaserdemo-main
+    binary: goreleaserdemo-main
+    env:
       - CGO_ENABLED=0
     goos:
-      - linux
       - windows
-      - darwin
+  - main: ./cmd/go-middleware-demo/main.go
+    id: gomiddlewaredemo-main
+    binary: gomiddlewaredemo-main
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
 
 archives:
   - format: tar.gz
